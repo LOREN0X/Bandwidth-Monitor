@@ -1,17 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Bandwidth Monitor",
-  "version": "1.0",
-  "description": "Integrates OpenSpeedTest into a Chrome extension.",
+  "name": "Speed Test Extension",
+  "version": "1.1",
+  "description": "Measures download and upload speed.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://*/*"],
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "icon48.png",
-    "default_title": "Bandwidth Monitor"
+    "default_icon": "icon16.png"
   },
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "permissions": []
+  "background": {
+    "service_worker": "background.js"
+  }
 }
