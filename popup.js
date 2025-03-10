@@ -14,54 +14,68 @@ async function runSpeedTest() {
     }
 }
 
-// Run speed test immediately and then repeat every second
+
+
 runSpeedTest();
 setInterval(runSpeedTest, 1000);
 
-async function measureDownloadSpeed() {
-    const fileUrl = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-10mb-file.zip"; 
-    const fileSize = 10 * 1024 * 1024 * 8;
-    const corsProxy = "https://api.allorigins.win/get?url="; 
 
+async function measureDownloadSpeed() {
+    const fileUrl = "https://proof.ovh.net/files/10Mb.dat";
     const startTime = performance.now();
+
     try {
-        const response = await fetch(corsProxy + encodeURIComponent(fileUrl), {
+        const response = await fetch(fileUrl, {
             method: "GET",
             headers: {
-                "pragma": "no-cache",
-                "cache-control": "no-cache"
+                "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0"
             }
-        }); 
+        });
+
         if (!response.ok) throw new Error(`Failed to fetch file: ${response.status}`);
-        const blob = await response.blob();
+
+        const contentLength = response.headers.get('Content-Length');
+        const totalBytes = parseInt(contentLength, 10);
+        
+        if (!totalBytes) {
+            throw new Error("Failed to retrieve valid file size");
+        }
+
+        await response.blob(); 
+
+        const endTime = performance.now();
+        const duration = (endTime - startTime) / 1000;
+
+        const speedMbps = ((totalBytes * 8) / (duration * 1e6)).toFixed(2);
+        return speedMbps;
+
     } catch (error) {
         console.error("Download failed:", error);
         throw new Error("Download failed");
     }
-    const endTime = performance.now();
-
-    const duration = (endTime - startTime) / 1000; 
-    const speedMbps = (fileSize / (duration * 1e6)).toFixed(2);
-    return speedMbps;
 }
 
 async function measureUploadSpeed() {
     const testData = new Uint8Array(10 * 1024 * 1024);
     const fileSize = testData.length * 8;
-
     const startTime = performance.now();
+
     try {
         const response = await fetch("https://speed.cloudflare.com/__up", {
             method: "POST",
             body: testData,
             headers: { "Content-Type": "application/octet-stream" }
         });
+
         if (!response.ok) throw new Error("Upload failed");
+
     } catch {
         throw new Error("Upload failed");
     }
-    const endTime = performance.now();
 
-    const duration = (endTime - startTime) / 1000; 
+    const endTime = performance.now();
+    const duration = (endTime - startTime) / 1000;
     return (fileSize / (duration * 1e6)).toFixed(2);
 }

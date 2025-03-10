@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Speed Test Extension",
+  "name": "Bandwidth monitor",
   "version": "1.1",
   "description": "Measures download and upload speed.",
   "permissions": ["storage"],
