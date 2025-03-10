@@ -1,9 +1,9 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Bandwidth monitor",
   "version": "1.1",
   "description": "Measures download and upload speed.",
-  "permissions": ["storage"],
+  "permissions": ["storage","tabs"],
   "host_permissions": ["https://*/*"],
   "action": {
     "default_popup": "popup.html",
