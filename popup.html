@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bandwidth monitor</title>
-    <script src="popup.js" defer></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandwidth-Monitor</title>
+  <link rel="stylesheet" type="text/css" href="css.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
-    <p id="downloadSpeed">Download Speed: -</p>
-    <p id="uploadSpeed">Upload Speed: -</p>
+
+  <button class="settings-btn" id="settingsButton">⚙</button>
+  <i class="fa fa-download" aria-hidden="true"></i>
+  <div class="gauge-d">
+    <div class="gauge_body-d">
+        <div class="gauge_fill-d"></div>
+        <div class="gauge_cover-d"><p id="downloadSpeedDisplay">0 Mbps</p></div>
+    </div>
+  </div>
+  <div><p> </p></div>
+  <i class="fa fa-upload" aria-hidden="true"></i>
+  <div class="gauge-u">
+    <div class="gauge_body-u">
+        <div class="gauge_fill-u"></div>
+        <div class="gauge_cover-u"><p id="uploadSpeedDisplay">0 Mbps</p></div>
+    </div>
+  </div>
+
+
+  <div id="settingsPopup" class="settings-popup" style="display: none;">
+    <h3>Settings</h3>
+
+    <label for="connections">Parallel Connections:</label>
+    <input type="number" id="connections" min="1" max="8" class="parallel_connections">
+
+    <label for="fontSize">Font Size:</label>
+    <select id="fontSize" class="font_size">
+      <option value="16px">Small</option>
+      <option value="20px" selected>Medium</option>
+      <option value="24px">Large</option>
+    </select>
+
+    <label>
+        <input type="checkbox" id="themeToggle" class="light_mode"> Light Mode:
+    </label>
+
+    <label class="space">   </label>
+
+    <button id="saveSettings">Save</button>
+    <button id="closeSettings">Close</button>
+  </div>
+
+  <script src="settings.js"></script>
+  <script src="download_speed.js"></script>
+  <script src="upload_speed.js"></script>
+  <script src="gauge.js"></script>
+
+  
+
 </body>
 </html>
