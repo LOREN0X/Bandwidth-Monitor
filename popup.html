@@ -32,9 +32,6 @@
   <div id="settingsPopup" class="settings-popup" style="display: none;">
     <h3>Settings</h3>
 
-    <label for="connections">Parallel Connections:</label>
-    <input type="number" id="connections" min="1" max="8" class="parallel_connections">
-
     <label for="fontSize">Font Size:</label>
     <select id="fontSize" class="font_size">
       <option value="16px">Small</option>
@@ -46,8 +43,21 @@
         <input type="checkbox" id="themeToggle" class="light_mode"> Light Mode:
     </label>
 
-    <label class="space">   </label>
+    <button id="advancedMenuBtn">Advanced Menu</button>
+<div id="advancedMenu" style="display: none;">
+    <div class="setting-item">
+        <label for="connections">Parallel Connections:</label>
+        <input type="number" id="connections" min="1" max="8">
+    </div>
 
+    <div class="setting-item">
+        <label for="intervals">Interval (s):</label>
+        <input type="number" id="intervals" min="1" max="60">
+    </div>
+</div>
+
+
+    
     <button id="saveSettings">Save</button>
     <button id="closeSettings">Close</button>
   </div>

@@ -30,5 +30,10 @@
       "matches": ["*://*.mozilla.org/*"],
       "js": ["download_speed.js", "upload_speed.js", "settings.js", "gauge.js"]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bandwidth-monitor@gmail.com"
+    }
+  }
 }

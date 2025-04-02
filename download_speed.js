@@ -1,4 +1,5 @@
 let maxConnections = localStorage.getItem("maxConnections") || 8;
+let intervals = localStorage.getItem("intervals") || 3;
 const fileUrl = "https://proof.ovh.net/files/10Mb.dat";
 let controllers = [];
 
@@ -68,7 +69,7 @@ function startDownloadLoop() {
     setInterval(() => {
         adjustMaxConnections();
         measureDownloadSpeed(fileUrl, maxConnections);
-    }, 1000);
+    }, intervals*1000);
 }
 
 startDownloadLoop();
