@@ -10,27 +10,25 @@
 
   <style>
     body {
-      margin: 0;
+      background-image: url('webbg.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      margin: 0%;
       font-family: 'Inter', sans-serif;
-      background-color: rgb(37, 37, 37);
-      color: rgb(200, 200, 200);
-      transition: background 0.3s, color 0.3s;
     }
     .light-mode {
-      background-color: rgb(200, 200, 200);
-      color: rgb(0, 0, 0);
       .container{
-        background-color: rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.85);
         color: rgb(0, 0, 0);
-        box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
       }
     }
     .container {
-      background-color: rgba(0, 0, 0, 1);
-      box-shadow: 0px 0px 10px rgba(200, 200, 200, 0.5);
+      background-color: rgba(0, 0, 0, 0.85);
       max-width: 800px;
       margin: auto;
       padding: 2rem;
+      margin-left: 40%;
     }
     .header {
       display: flex;
@@ -93,16 +91,16 @@
       margin: 0.5rem 0;
     }
     .ext {
-  position: absolute;
-  top: 100px;
-  right: 70px;
+  position: fixed;
+  top: 504px;
+  left: 18%;
   background-color: rgb(37, 37, 37);
   color: rgb(20, 169, 255);
   font-family: Arial, sans-serif;
-  font-size: 24px;
+  font-size: 12px;
   padding: 10px;
-  width: 250px;
-  height: 300px;
+  width: 140px;
+  height: 220px;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -172,6 +170,7 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     <div class="header">
       <div class="title">
@@ -213,13 +212,14 @@
       </ul>
     </div>
   </div>
+
   <div class="ext">
 
         <i class="fa fa-download" aria-hidden="true"></i>
         <div class="gauge-d">
           <div class="gauge_body-d">
               <div class="gauge_fill-d"></div>
-              <div class="gauge_cover-d"><p id="downloadSpeedDisplay" style="font-size: 24px">0 Mbps</p></div>
+              <div class="gauge_cover-d"><p id="downloadSpeedDisplay" style="font-size: 16px">0 Mbps</p></div>
           </div>
         </div>
         <div><p> </p></div>
@@ -227,10 +227,9 @@
         <div class="gauge-u">
           <div class="gauge_body-u">
               <div class="gauge_fill-u"></div>
-              <div class="gauge_cover-u"><p id="uploadSpeedDisplay" style="font-size: 24px">0 Mbps</p></div>
+              <div class="gauge_cover-u"><p id="uploadSpeedDisplay" style="font-size: 16px">0 Mbps</p></div>
           </div>
         </div>
-        <p style="padding-top: 25%; color: rgb(100, 100, 100);">(This generates random values and is merely a showcase of the extension; it is not intended to reflect your actual network bandwidth.)</p>
 
         <script>
           function updateGauges() {
@@ -256,7 +255,7 @@
         
         
   </div>
-  <div style="position: fixed; top: 600px;">
+  <div style="position: fixed; top: 800px; left: 286px;">
     <a href="https://www.producthunt.com/posts/bandwidth-monitor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bandwidth&#0045;monitor" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=948826&theme=dark&t=1744112046433" alt="Bandwidth&#0045;Monitor - This&#0032;extension&#0032;allows&#0032;you&#0032;to&#0032;monitor&#0032;your&#0032;network&#0032;bandwidth&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
   </div>
 
