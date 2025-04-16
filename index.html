@@ -10,25 +10,24 @@
 
   <style>
     body {
-      background-image: url('webbg.png');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
+      background-color:rgb(37, 37, 37);
       margin: 0%;
       font-family: 'Inter', sans-serif;
+      color: #fff;
     }
     .light-mode {
       .container{
         background-color: rgba(255, 255, 255, 0.85);
+        box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
         color: rgb(0, 0, 0);
       }
     }
     .container {
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgb(10, 10, 10);
+      box-shadow: 0px 0px 10px rgba(200, 200, 200, 0.5);
       max-width: 800px;
       margin: auto;
       padding: 2rem;
-      margin-left: 40%;
     }
     .header {
       display: flex;
@@ -38,6 +37,8 @@
     }
     .title {
       display: flex;
+      justify-content: space-between;
+      width: 73.5%;
       align-items: center;
       gap: 0.5rem;
     }
@@ -91,35 +92,33 @@
       margin: 0.5rem 0;
     }
     .ext {
-  position: fixed;
-  top: 504px;
-  left: 18%;
+  position: absolute;
+  top: 48.5%;
+  left: 57.3%;
   background-color: rgb(37, 37, 37);
   color: rgb(20, 169, 255);
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 6px;
   padding: 10px;
-  width: 140px;
-  height: 220px;
+  width: 2.6%;
+  height: 8.7%;
   transition: background 0.3s, color 0.3s;
 }
 
 .light-mode {
 	background-color: rgb(200, 200, 200);
 	color: black;
-	.ext {
-	background: rgb(200, 200, 200);
-	color: rgb(0, 0, 0);
-  }
+	.ext {background: rgb(200, 200, 200);color: rgb(0, 0, 0);}
   .settings-popup label {color: rgb(50, 50, 50);}
   .gauge_cover-d{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
   .gauge_cover-u{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
   .addon_btn{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
+  .phd{visibility: hidden;}
+  .phl{visibility: visible;}
   }
 #speed { font-size: 18px; }
 .gauge-d, .gauge-u {
     width: 100%;
-    max-width: 250px;
 }
 .gauge_body-d, .gauge_body-u {
     width: 100%;
@@ -167,6 +166,18 @@
   margin-top: 5%; 
   background-color: rgb(37, 37, 37); 
 }
+.phd{
+  margin-left: 28%;
+  top: 178%;
+  visibility: visible;
+  position: absolute;
+}
+.phl{
+  margin-left: 28%;
+  top: 178%;
+  visibility: hidden;
+  position: absolute;
+}
   </style>
 </head>
 <body>
@@ -182,9 +193,50 @@
       </button>
     </div>
 
-    <p style="padding-top: 5%;">This extension allows you to monitor your network bandwidth by measuring your download and upload speeds.</p>
+    <p style="padding-top: 5%; text-align: center;">This extension allows you to monitor your network bandwidth by <br> measuring your download and upload speeds.</p>
+    <img src="laptop.png" style="width: 75%; padding-left: 12.5%; padding-right: 12.5%;">
+    <div class="ext">   
+      <i class="fa fa-download" aria-hidden="true"></i>
+      <div class="gauge-d">
+        <div class="gauge_body-d">
+            <div class="gauge_fill-d"></div>
+            <div class="gauge_cover-d"><p id="downloadSpeedDisplay" style="font-size: 6px">0 Mbps</p></div>
+        </div>
+      </div>
+      <i class="fa fa-upload" aria-hidden="true" style="padding-top: 40%;"></i>
+      <div class="gauge-u">
+        <div class="gauge_body-u">
+            <div class="gauge_fill-u"></div>
+            <div class="gauge_cover-u"><p id="uploadSpeedDisplay" style="font-size: 6px">0 Mbps</p></div>
+        </div>
+      </div>
 
-    <h2 style="padding-top: 5%;">Features:</h2>
+      <script>
+        function updateGauges() {
+          const downloadSpeed = Math.floor(Math.random() * 1001);
+          const uploadSpeed = Math.floor(Math.random() * 201);
+      
+          document.getElementById('downloadSpeedDisplay').textContent = `${downloadSpeed} Mbps`;
+          document.getElementById('uploadSpeedDisplay').textContent = `${uploadSpeed} Mbps`;
+      
+          const downloadFill = document.querySelector('.gauge_fill-d');
+          const uploadFill = document.querySelector('.gauge_fill-u');
+      
+          const downloadDeg = Math.min(downloadSpeed / 1000, 1) * 180;
+          const uploadDeg = Math.min(uploadSpeed / 1000, 1) * 180;
+      
+          downloadFill.style.transform = `rotate(${downloadDeg}deg)`;
+          uploadFill.style.transform = `rotate(${uploadDeg}deg)`;
+        }
+      
+        updateGauges();
+        setInterval(updateGauges, 3000);
+      </script>
+      
+      
+</div>
+    <hr>
+    <h2>Features:</h2>
     <ul>
       <li>Light/Dark mode</li>
       <li>Download/Upload speed font size changer</li>
@@ -195,13 +247,15 @@
     
     <button class="addon_btn"><a href="https://addons.mozilla.org/en-US/firefox/addon/bandwidth-monitor/" target="_blank">Add to browser</a></button>
 
-    <h2 style="padding-top: 5%;">External sites used:</h2>
+    <hr style="margin-top: 8%;">
+    <h2>External sites used:</h2>
     <a href="https://proof.ovh.net">https://proof.ovh.net</a>
     <p> </p>
     <a href="https://speed.cloudflare.com">https://speed.cloudflare.com</a>
 
+    <hr style="margin-top: 5%;">
     <div class="links">
-      <h2 style="padding-top: 5%;">My links:</h2>
+      <h2>My links:</h2>
       <ul>
         <li><a href="https://youtu.be/llvTXYPBcxQ" target="_blank">YouTube</a></li>
         <li><a href="https://x.com/Lorenox_Mordax/status/1909653026089885714" target="_blank">X (formerly Twitter)</a></li>
@@ -210,55 +264,10 @@
         <li><a href="https://www.indiehackers.com/product/bandwidth-monitor" target="_blank">Indie Hackers</a></li>
         <li><a href="https://github.com/LOREN0X/Bandwidth-Monitor" target="_blank">GitHub</a></li>
       </ul>
+      <a href="https://www.producthunt.com/posts/bandwidth-monitor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bandwidth&#0045;monitor" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=948826&theme=dark&t=1744112046433" alt="Bandwidth&#0045;Monitor - This&#0032;extension&#0032;allows&#0032;you&#0032;to&#0032;monitor&#0032;your&#0032;network&#0032;bandwidth&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" class="phd"/></a>
+      <a href="https://www.producthunt.com/posts/bandwidth-monitor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bandwidth&#0045;monitor" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=948826&theme=neutral&t=1744842914511" alt="Bandwidth&#0045;Monitor - This&#0032;extension&#0032;allows&#0032;you&#0032;to&#0032;monitor&#0032;your&#0032;network&#0032;bandwidth&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" class="phl" /></a>
     </div>
   </div>
-
-  <div class="ext">
-
-        <i class="fa fa-download" aria-hidden="true"></i>
-        <div class="gauge-d">
-          <div class="gauge_body-d">
-              <div class="gauge_fill-d"></div>
-              <div class="gauge_cover-d"><p id="downloadSpeedDisplay" style="font-size: 16px">0 Mbps</p></div>
-          </div>
-        </div>
-        <div><p> </p></div>
-        <i class="fa fa-upload" aria-hidden="true"></i>
-        <div class="gauge-u">
-          <div class="gauge_body-u">
-              <div class="gauge_fill-u"></div>
-              <div class="gauge_cover-u"><p id="uploadSpeedDisplay" style="font-size: 16px">0 Mbps</p></div>
-          </div>
-        </div>
-
-        <script>
-          function updateGauges() {
-            const downloadSpeed = Math.floor(Math.random() * 1001);
-            const uploadSpeed = Math.floor(Math.random() * 201);
-        
-            document.getElementById('downloadSpeedDisplay').textContent = `${downloadSpeed} Mbps`;
-            document.getElementById('uploadSpeedDisplay').textContent = `${uploadSpeed} Mbps`;
-        
-            const downloadFill = document.querySelector('.gauge_fill-d');
-            const uploadFill = document.querySelector('.gauge_fill-u');
-        
-            const downloadDeg = Math.min(downloadSpeed / 1000, 1) * 180;
-            const uploadDeg = Math.min(uploadSpeed / 200, 1) * 180;
-        
-            downloadFill.style.transform = `rotate(${downloadDeg}deg)`;
-            uploadFill.style.transform = `rotate(${uploadDeg}deg)`;
-          }
-        
-          updateGauges();
-          setInterval(updateGauges, 3000);
-        </script>
-        
-        
-  </div>
-  <div style="position: fixed; top: 800px; left: 286px;">
-    <a href="https://www.producthunt.com/posts/bandwidth-monitor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bandwidth&#0045;monitor" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=948826&theme=dark&t=1744112046433" alt="Bandwidth&#0045;Monitor - This&#0032;extension&#0032;allows&#0032;you&#0032;to&#0032;monitor&#0032;your&#0032;network&#0032;bandwidth&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-  </div>
-
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle('light-mode');
@@ -271,6 +280,6 @@
     }
   </script>
 
-  <div style="background-color: rgb(20, 20, 20); color: #fff; width: 100%;"><p style="font-size: medium; padding-left: 37%; margin-bottom: auto; margin-top: 10%;">Made by: Adam Kuruc              Email: AdamKuruc666@gmail.com</p></div>
+  <div style="background-color: rgb(20, 20, 20); color: #fff; width: 100%;"><p style="font-size: medium; padding-left: 37%; margin-bottom: auto; margin-top: 10%;">Made by: Adam Kuruc              Email: <a href="mailto:AdamKuruc666@gmail.com">AdamKuruc666@gmail.com</a></p></div>
 </body>
 </html>
