@@ -110,54 +110,14 @@
 	color: black;
 	.ext {background: rgb(200, 200, 200);color: rgb(0, 0, 0);}
   .settings-popup label {color: rgb(50, 50, 50);}
-  .gauge_cover-d{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
-  .gauge_cover-u{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
+  .features{color: #000;}
   .addon_btn{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
   .phd{visibility: hidden;}
   .phl{visibility: visible;}
   }
-#speed { font-size: 18px; }
-.gauge-d, .gauge-u {
-    width: 100%;
+.features{
+  color: #fff;
 }
-.gauge_body-d, .gauge_body-u {
-    width: 100%;
-    height: 0;
-    padding-bottom: 50%;
-    background: rgb(122, 122, 122);
-    position: relative;
-    border-top-left-radius: 100% 200%;
-    border-top-right-radius: 100% 200%;
-    overflow: hidden;
-}
-.gauge_fill-d, .gauge_fill-u {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: inherit;
-  height: 100%;
-  background: rgb(20, 169, 255);
-  transform-origin: center top;
-  transition: transform 0.5s ease-out; 
-}
-
-.gauge_cover-d, .gauge_cover-u {
-  width: 75%;
-  height: 150%;
-  background: rgb(37, 37, 37);
-  position: absolute;
-  border-radius: 50%;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 25%;
-  box-sizing: border-box;
-  font-size: 18px;
-}
-
 .addon_btn{
   width: 250px; 
   height: 50px; 
@@ -167,16 +127,15 @@
   background-color: rgb(37, 37, 37); 
 }
 .phd{
-  margin-left: 28%;
+  margin-left: 35%;
   top: 178%;
   visibility: visible;
-  position: absolute;
+  position: relative;
 }
 .phl{
-  margin-left: 28%;
-  top: 178%;
+  right: 32%;
   visibility: hidden;
-  position: absolute;
+  position: relative;
 }
   </style>
 </head>
@@ -188,65 +147,23 @@
         <img src="icon128.png" alt="icon">
         <h1>Bandwidth-Monitor</h1>
       </div>
-      <button class="toggle-mode" onclick="toggleDarkMode()" aria-label="Toggle Light/Dark Mode">
-        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
-      </button>
+      
     </div>
 
     <p style="padding-top: 5%; text-align: center;">This extension allows you to monitor your network bandwidth by <br> measuring your download and upload speeds.</p>
+    
+    <button class="addon_btn"><a href="https://addons.mozilla.org/en-US/firefox/addon/bandwidth-monitor/" target="_blank" style="display: flex;"><img src="Firefoxlogo.png" width="10%" style="display: flex; margin-left: 15%;">Add to browser</a></button>    
+    
     <img src="laptop.png" style="width: 75%; padding-left: 12.5%; padding-right: 12.5%;">
-    <div class="ext">   
-      <i class="fa fa-download" aria-hidden="true"></i>
-      <div class="gauge-d">
-        <div class="gauge_body-d">
-            <div class="gauge_fill-d"></div>
-            <div class="gauge_cover-d"><p id="downloadSpeedDisplay" style="font-size: 6px">0 Mbps</p></div>
-        </div>
-      </div>
-      <i class="fa fa-upload" aria-hidden="true" style="padding-top: 40%;"></i>
-      <div class="gauge-u">
-        <div class="gauge_body-u">
-            <div class="gauge_fill-u"></div>
-            <div class="gauge_cover-u"><p id="uploadSpeedDisplay" style="font-size: 6px">0 Mbps</p></div>
-        </div>
-      </div>
-
-      <script>
-        function updateGauges() {
-          const downloadSpeed = Math.floor(Math.random() * 1001);
-          const uploadSpeed = Math.floor(Math.random() * 201);
-      
-          document.getElementById('downloadSpeedDisplay').textContent = `${downloadSpeed} Mbps`;
-          document.getElementById('uploadSpeedDisplay').textContent = `${uploadSpeed} Mbps`;
-      
-          const downloadFill = document.querySelector('.gauge_fill-d');
-          const uploadFill = document.querySelector('.gauge_fill-u');
-      
-          const downloadDeg = Math.min(downloadSpeed / 1000, 1) * 180;
-          const uploadDeg = Math.min(uploadSpeed / 1000, 1) * 180;
-      
-          downloadFill.style.transform = `rotate(${downloadDeg}deg)`;
-          uploadFill.style.transform = `rotate(${uploadDeg}deg)`;
-        }
-      
-        updateGauges();
-        setInterval(updateGauges, 3000);
-      </script>
-      
-      
-</div>
-    <hr>
+    
     <h2>Features:</h2>
-    <ul>
-      <li>Light/Dark mode</li>
-      <li>Download/Upload speed font size changer</li>
-      <li>Number of parallel connections (1-8) – lower this setting if you have lower download speeds for more accurate measurements</li>
-      <li>Downloader interval changer – allows you to set how often the extension will measure download (recommended to set higher number of seconds if you have lower download speeds)</li>
-    </ul>
-    
-    
-    <button class="addon_btn"><a href="https://addons.mozilla.org/en-US/firefox/addon/bandwidth-monitor/" target="_blank">Add to browser</a></button>
-
+      <button class="toggle-mode" onclick="toggleDarkMode()" aria-label="Toggle Light/Dark Mode" style="margin-left: -1%; margin-bottom: -3%;">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
+        <p class="features">Light/Dark mode</p>
+      </button>
+      <p class="features">🗚 Download/Upload speed font size changer</p>
+      <p class="features">🌐 Number of parallel connections (1-8) – lower this setting if you have lower download speeds for more accurate measurements</p>
+      <p class="features">⌛ Downloader interval changer – allows you to set how often the extension will measure download (recommended to set higher number of seconds if you have lower download speeds)</p>
     <hr style="margin-top: 8%;">
     <h2>External sites used:</h2>
     <a href="https://proof.ovh.net">https://proof.ovh.net</a>
