@@ -104,7 +104,8 @@
   height: 8.7%;
   transition: background 0.3s, color 0.3s;
 }
-
+.laptopD{display: block;}
+.laptopL{display: none;}
 .light-mode {
 	background-color: rgb(200, 200, 200);
 	color: black;
@@ -114,6 +115,8 @@
   .addon_btn{background: rgb(200, 200, 200);transition: background 0.3s, color 0.3s;}
   .phd{visibility: hidden;}
   .phl{visibility: visible;}
+  .laptopD{display: none;}
+  .laptopL{display: block;}
   }
 .features{
   color: #fff;
@@ -137,6 +140,7 @@
   visibility: hidden;
   position: relative;
 }
+
   </style>
 </head>
 <body>
@@ -147,20 +151,20 @@
         <img src="icon128.png" alt="icon">
         <h1>Bandwidth-Monitor</h1>
       </div>
-      
+      <button class="toggle-mode" onclick="toggleDarkMode()" aria-label="Toggle Light/Dark Mode">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
+      </button>
     </div>
 
     <p style="padding-top: 5%; text-align: center;">This extension allows you to monitor your network bandwidth by <br> measuring your download and upload speeds.</p>
     
     <button class="addon_btn"><a href="https://addons.mozilla.org/en-US/firefox/addon/bandwidth-monitor/" target="_blank" style="display: flex;"><img src="Firefoxlogo.png" width="10%" style="display: flex; margin-left: 15%;">Add to browser</a></button>    
     
-    <img src="laptop.png" style="width: 75%; padding-left: 12.5%; padding-right: 12.5%;">
-    
+    <img class="laptopD" src="laptopDark.png" style="width: 75%; padding-left: 12.5%; padding-right: 12.5%;">
+    <img class="laptopL" src="laptopLight.png" style="width: 75%; padding-left: 12.5%; padding-right: 12.5%;">
+
     <h2>Features:</h2>
-      <button class="toggle-mode" onclick="toggleDarkMode()" aria-label="Toggle Light/Dark Mode" style="margin-left: -1%; margin-bottom: -3%;">
-        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
-        <p class="features">Light/Dark mode</p>
-      </button>
+      <p class="features">🔆 Light/Dark mode</p>
       <p class="features">🗚 Download/Upload speed font size changer</p>
       <p class="features">🌐 Number of parallel connections (1-8) – lower this setting if you have lower download speeds for more accurate measurements</p>
       <p class="features">⌛ Downloader interval changer – allows you to set how often the extension will measure download (recommended to set higher number of seconds if you have lower download speeds)</p>
