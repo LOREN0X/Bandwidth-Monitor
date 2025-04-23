@@ -23,6 +23,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const fontSizeSelect = document.getElementById("fontSize");
   const themeToggle = document.getElementById("themeToggle");
 
+  const accentColorPicker = document.getElementById("accentColor");
+
+// Load saved color
+const savedAccent = localStorage.getItem("accentColor") || "#14a9ff";
+accentColorPicker.value = savedAccent;
+document.documentElement.style.setProperty("--accent-color", savedAccent);
+
+// Save color on click
+document.getElementById("saveSettings").addEventListener("click", function () {
+    // ... existing saves ...
+    localStorage.setItem("accentColor", accentColorPicker.value);
+    document.documentElement.style.setProperty("--accent-color", accentColorPicker.value);
+});
+
+
   // Load saved settings
   connectionsInput.value = localStorage.getItem("maxConnections") || 8;
   intervals.value = localStorage.getItem("intervals") || 3;

@@ -12,7 +12,7 @@
 <body>
 
   <button class="settings-btn" id="settingsButton">⚙</button>
-  <i class="fa fa-download" aria-hidden="true"></i>
+  <i class="fa fa-download" style="color: var(--accent-color);" aria-hidden="true"></i>
   <div class="gauge-d">
     <div class="gauge_body-d">
         <div class="gauge_fill-d"></div>
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div><p> </p></div>
-  <i class="fa fa-upload" aria-hidden="true"></i>
+  <i class="fa fa-upload" style="color: var(--accent-color);" aria-hidden="true"></i>
   <div class="gauge-u">
     <div class="gauge_body-u">
         <div class="gauge_fill-u"></div>
@@ -41,6 +41,10 @@
 
     <label>
         <input type="checkbox" id="themeToggle" class="light_mode"> Light Mode:
+    </label>
+
+    <label for="accentColor">Accent Color:
+        <input type="color" id="accentColor" class="accent_color">
     </label>
 
     <button id="advancedMenuBtn">Advanced Menu</button>
